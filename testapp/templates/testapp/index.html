@@ -1,0 +1,20 @@
+
+<h1> List of Persons</h1>
+
+{% if testdata_list %}
+    <nav>
+    <ul>
+    {% for testdata in testdata_list %}
+        <li>{{ testdata.name }}</li>
+        <ul>
+        <li>{{ testdata.age }}</li>
+    </ul>
+    <span><a href="{% url 'testapp:update' testdata.id %}">edit</a></span>
+    <span><a href="{% url 'testapp:delete' testdata.id %}">delete</a></span>
+    <p><br></p>
+    {% endfor %}
+    </ul></nav>
+{% else %}
+    <p>No data is available.</p>
+{% endif %}
+<a href="{% url 'testapp:create' %}">Input a new Person</a>
